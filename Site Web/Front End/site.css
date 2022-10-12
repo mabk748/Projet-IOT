@@ -1,5 +1,11 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+:root{
+  --font-style: 'Nunito Sans', sans-serif;
+} /*-- décommente si tu préfère ce font */
+
 body{
   background-color: white;
+  /* font-family: var(--font-style);*/
 }
 img{
   width: 80%;
@@ -9,6 +15,10 @@ img{
   background-color: white;
   position: fixed;
 	top: 0px;
+}
+#container{
+  background-image: "HOMEotix_logo.jpg";
+  background-position: center;
 }
 .middle{
   position: relative;
@@ -28,7 +38,7 @@ img{
 }
 ul{
   margin: 0%;
-  width: 450px;
+  width: 98%;
   display: flex;
   flex-direction: row;
   list-style: none;
@@ -43,6 +53,12 @@ li{
 	color: white;
 	font-size: 20px;
 	cursor: pointer;
+}
+li:hover{
+  background: #75ff3e;
+  color: #75ff3e;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #75ff3e, 0 0 25px #75ff3e, 0 0 100px #75ff3e;
 }
 a{
     text-decoration: none;/*Pour que le lien ne soit plus "souligné"...*/

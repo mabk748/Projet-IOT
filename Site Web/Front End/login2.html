@@ -5,17 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="site.css" type="text/css"/>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
-        :root{
-            --font-style: 'Nunito Sans', sans-serif;
-        }
         * {
             box-sizing: border-box;
         }
         body {
             background: white;
-            font-family: var(--font-style);
         }
         .login-box {
             position: absolute;
@@ -24,7 +20,7 @@
             width: 400px;
             padding: 40px;
             transform: translate(-50%, -50%);
-            background: #75ff3e;
+            background: #33492b;
             box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
             border-radius: 10px;
         }
@@ -76,7 +72,7 @@
         }
         #submit:hover {
             background: #2c01ff;
-            color: #75ff3e;
+            color: #33492b;
             border-radius: 5px;
             box-shadow: 0 0 5px #2c01ff, 0 0 25px #2c01ff, 0 0 100px #2c01ff;
         }
@@ -101,6 +97,18 @@
     </style>
 </head>
 <body>
+    <div class="fixe">
+		<div id="container" >
+			<a href="Accueil.html"><img src="HOMEotix_logo.jpg" style="width:300px;height:100px;"></a>
+		</div>
+        <ul>
+            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="Equipe.html">Notre Equipe</a></li>
+            <li><a href="Maison.html">Ma Maison</a></li>
+            <li><a href="Apropos.html">A Propos</a></li>
+            <li><a href="login2.html">Espace Client</a></li>
+        </ul>
+    </div>
     <div class="login-box">
         <h2>Login</h2>
         <form>
