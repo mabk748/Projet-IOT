@@ -1,0 +1,120 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wenneker Assignment
+% LaTeX Template
+% Version 2.0 (12/1/2019)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@LaTeXTemplates.com)
+% Frits Wenneker
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{scrartcl} % Font size
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{	
+	\normalfont\normalsize
+	\vspace{\fill} % Whitespace
+	\textsc{INSA CVL, Internet des objets}\\ % Your university, school and/or department name(s)
+	\vspace{25pt} % Whitespace
+	\rule{\linewidth}{0.5pt}\\ % Thin top horizontal rule
+	\vspace{20pt} % Whitespace
+	{\huge Projet IOT - HOMEotics}\\ % The assignment title
+	\vspace{12pt} % Whitespace
+	\rule{\linewidth}{2pt}\\ % Thick bottom horizontal rule
+	\vspace{12pt} % Whitespace
+}
+
+\author{Nicolas Zhang, Audrey Garcia, Gaye Diawara, Quentin Lesniak} % Your name
+
+\date{\normalsize\today\vspace{\fill}} % Today's date (\today) or a custom date
+
+
+
+\begin{document}
+
+\maketitle % Print the title
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	CAHIER DE CHARGES
+%----------------------------------------------------------------------------------------
+
+\section{Cahier des charges}
+
+\subsection{Contexte}
+
+Dans le cadre du cours de Mr. Bavencoffe sur l'Internet de objets, nous avons été amenés à réaliser ce projet. Ses objectifs sont de se familiariser avec la programmation web, réseau et les technologies I.O.T.\\
+Nous avons donc imaginé l'entreprise fictive \textit{HOMEotics}, spécialisée dans la domotique. Elle propose à ses clients d'équiper leur maison en objets I.O.T. pour améliorer leur confort au quotidien et optimiser leur consomation d'énergie.
+
+%------------------------------------------------
+
+\subsection{Détail du projet}
+
+S'agissant d'un projet à temps et moyens limités, notre objectif n'est pas de réaliser de systèmes complexes gérant l'état d'une maison d'eux mêmes.\\
+Nous nous concentrerons sur la réalisation de différentes unités mobiles sans fils, telles que des capteurs, à placer dans à la maison.\\
+Tous ces équipements sont connectés à une unité centrale regroupant toutes les informations envoyées par ces derniers et proposant une interface homme/machine (IHM).\\
+L'unité centrale sera également accessible depuis le web pour monitorer la maison en dehors de celle-ci.
+
+%----------------------------------------------------------------------------------------
+%	FIGURE - SCHEMA D'INTERCONNEXIONS
+%----------------------------------------------------------------------------------------
+
+\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+	\centering
+	\includegraphics[width=0.75\columnwidth]{IOT_Interconnexions.png} % Example image
+	\caption{Schéma d'interconnexions}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+
+\subsubsection{Les unités mobiles}
+
+Comme évoqué précédemment, nous nous limitons à la conception de quelques capteurs sans fils tels que de tempérérature, qualité de l'air ou de mouvement, à placer dans la maison. Ils sont de petite taille, fonctionnent sur pile ou batterie et embarquent une antenne \textit{[protocole peu énergivore]} pour communiquer leurs mesures.\\
+Si le temps nous le permet, nous pourrons imaginer reproduire partiellement des equipements électroménagers avec le matériel dont nous disposons.
+
+\subsubsection{L'unité centrale}
+
+Toutes les unités mobiles de la maison sont connectées à une unité centrale. Celle-ci permet de rassembler toutes les informations envoyées par les untités mobiles. Ces informations sont ensuite utilisées pour monitorer la maison à travers une IHM intégrée à l'unité centrale, ou bien envoyées dans une base de données sur un serveur distant via protocole LoRaWAN pour exploitation sur un 
+site internet.\\
+Parmi les données transmises par les unités mobiles, l'unité centrale enregistrera des \texttt{logs} pour chacune d'elles dans un ficher texte. Elle prétraitera ensuite ces \texttt{logs} pour en faire ressortir les habitudes des clients et suggérer une automatisation des unités concernées.
+
+\subsubsection{L'IHM}
+
+L'interface homme/machine permet à l'utilisateur de monitorer sa maison et contrôler ses unités mobiles à distance. Elle est accessible sur l'unité centrale via un écran tactile et via internet dans l'espace client du site internet de l'entreprise.
+
+\subsubsection{Le site internet}
+
+Si l'utilisateur ne se trouve pas à proximité de l'unité centrale, il peut également avoir accès à l'IHM à distance via le site web de l'entreprise.\\
+Sa charte graphique s'articule autours du bleu, vert et blanc. Le site permet d'obtenir des informations sur l'entreprise, les membres du groupe et propose un accès vers un espace client. Le client peut donc s'identifier à l'aide d'un \texttt{login} et d'un \texttt{password} pour accéder au monitring de sa maison au préalable resneignée.
+
+\subsubsection{L'unité distante}
+
+Le site est hébergé sur une unité distante comprenant un serveur HTTP Apache, une base de données MySQL et un antenne LoRa pour recevoir les données des unités centrales des clients. Elle ne fonctionne pas sur batterie et est réalisée à partir d'un Rasberry Pi.\\
+La base de données contiendra :
+\begin{itemize}
+	\item{Une table de clients avec leurs informations respectives.}
+	\item{Une table de produits en service et rattachés à un client.}
+\end{itemize}
+
+\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+	\centering
+	\includegraphics[width=1\columnwidth]{IOT_BDD.png} % Example image
+	\caption{Diagramme Entité/Association}
+\end{figure}
+
+\end{document}
