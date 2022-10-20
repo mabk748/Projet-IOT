@@ -24,6 +24,15 @@ img{
   position: relative;
 	top: 250px;
 }
+
+
+#bottom{
+  background-image: linear-gradient(180deg, #fff,teal);
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
 .login-box{
 	position: absolute;
 	top: 50%;
