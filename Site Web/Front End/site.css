@@ -11,7 +11,7 @@ img{
   width: 80%;
 }
 .fixe{
-  
+  z-index: 1;
   inline-size: 100%;
   background-color: white;
   position: fixed;
