@@ -55,10 +55,10 @@ li{
 	cursor: pointer;
 }
 li:hover{
-  background: #75ff3e;
-  color: #75ff3e;
+  background: #5fbebe;
+  color: #5fbebe;
   border-radius: 5px;
-  box-shadow: 0 0 5px #75ff3e, 0 0 25px #75ff3e, 0 0 100px #75ff3e;
+  box-shadow: 0 0 5px #5fbebe, 0 0 25px #5fbebe, 0 0 100px #5fbebe;
 }
 a{
     text-decoration: none;/*Pour que le lien ne soit plus "souligné"...*/
