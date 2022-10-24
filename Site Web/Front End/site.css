@@ -21,13 +21,13 @@ img{
   background-image: "HOMEotix_logo.jpg";
   background-position: center;
 }
-.middle{
+.relative{
   position: relative;
-
-  left: 10%;
 	top: 150px;
 }
-
+#middle{
+  left: 10%;
+}
 
 #bottom{
   background-image: linear-gradient(180deg, #fff,teal);
