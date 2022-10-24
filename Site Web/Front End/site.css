@@ -32,6 +32,9 @@ img{
 #bottom{
   background-image: linear-gradient(180deg, #fff,teal);
   height: 50px;
+  left:0%;
+  right:0%;
+  width:auto;
   text-align: center;
   line-height: 50px;
 }
@@ -70,7 +73,7 @@ a{
 .login-box {
   z-index: 1;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   width: 400px;
   padding: 40px;
@@ -84,7 +87,9 @@ a{
   background-image: linear-gradient(180deg, #fff,teal);
   bottom: 0px;
   height: 50px;
-  width:100%;
+  left:0%;
+  right:0%;
+  width:auto;
   text-align: center;
   line-height: 50px;
 }
