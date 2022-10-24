@@ -168,3 +168,50 @@ a{
   color: #2c01ff;
   text-decoration: none; 
 }
+.register-box {
+  z-index: 1;
+  position: absolute;
+  top: 500px;
+  left: 50%;
+  width: 50%;
+  padding: 25px;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0 15px 25px teal;
+  border-radius: 10px;
+}
+
+.register-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: rgb(14, 84, 84);
+  text-align: center;
+}
+.register-box .user-box input {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(14, 84, 84);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(14, 84, 84);
+  outline: none;
+  background: transparent;
+}
+.register-box .user-box label {
+  position: relative;
+  left: 0px;
+  top: -60px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(14, 84, 84);
+  pointer-events: none;
+  transition: .5s;
+}
+.register-box .user-box input:focus~label, .login-box .user-box input:valid~label {
+  top: -85px;
+  left: 0;
+  color: rgb(14, 84, 84);
+  font-size: 12px;
+}
