@@ -24,15 +24,31 @@ img{
 .relative{
   position: relative;
 	top: 150px;
+  margin-bottom: 35%;
 }
+
+#Team
+{text-align: center;
+  line-height: 5;
+  background-color: aliceblue;
+  left:10%;
+  right:10%;
+  width:auto;
+}
+#Team:hover {
+  transform:scale(1.25);/* L'image est grossie de 25% */
+  }
+
 #middle{
+  z-index: 2;
   left: 10%;
 }
 
 .bottom{
-  position: absolute;
+  z-index: -1;
+  position: fixed;
   background-image: linear-gradient(180deg, #fff,teal);
-  bottom: 0px;
+  bottom: 0%;
   height: 50px;
   left:0%;
   right:0%;
