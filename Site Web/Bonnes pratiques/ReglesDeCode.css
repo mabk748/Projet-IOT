@@ -1,0 +1,79 @@
+/* ----------- GENERAL ------------ */
+
+/* Pour définir le style des balises pour toutes les pages */
+
+body{
+
+  ...
+
+}
+
+a{
+
+  ...
+
+}
+
+/* ------------------ HEADER -------------------- */
+
+/* Pour définir le style du header présent sur toutes les pages */
+
+div#header{
+
+  ...
+
+}
+
+div#logo{
+
+  ...
+
+}
+
+div#header ul{
+
+  ...
+
+}
+
+div#header li{
+
+  ...
+
+}
+
+/* -------------------- FOOTER ---------------------- */
+
+div#bottom{
+
+...
+
+}
+
+/* ----------- CONTENT ------------ */
+/* Pour définir le style des contenus particuliers des pages */
+
+/* ------------------- PAGE_NAME.HTML --------------------- */
+/* Syntaxe générale pour viser une balise ou un identifiant particulier */
+bloc_type#bloc_id ... target_type#target_id{
+
+  ...
+
+}
+
+/* Exemple pour un bloc <div> identifié (id="...") */
+div#bloc_id{
+
+  ...
+
+}
+
+/* Exemple pour un bloc <h4> identifié "target" (id="target") imbriqué dans 
+   1 bloc <div> identifié upper_id,
+   lui même imbriqué dans un bloc <ul> identifié some_id,
+   lui même imbriqué dans  un bloc <li> identifié some_other_id */
+div#upper_id ul#some_id li#some_other_id h4#target{
+
+  ...
+
+}
