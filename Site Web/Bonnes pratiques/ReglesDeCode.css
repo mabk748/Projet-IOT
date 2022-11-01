@@ -69,9 +69,9 @@ div#bloc_id{
 }
 
 /* Exemple pour un bloc <h4> identifié "target" (id="target") imbriqué dans 
-   1 bloc <div> identifié upper_id,
+   un bloc <li> identifié some_other_id
    lui même imbriqué dans un bloc <ul> identifié some_id,
-   lui même imbriqué dans  un bloc <li> identifié some_other_id */
+   lui même imbriqué 1 bloc <div> identifié upper_id, */
 div#upper_id ul#some_id li#some_other_id h4#target{
 
   ...
