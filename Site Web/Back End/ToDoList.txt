@@ -1,0 +1,15 @@
+
+Choses à faire pour le back end :
+
+OK	- Créer le BDD
+
+	- Créer les pages HTML :
+			-- De monitoring des capteurs
+	OK		-- D'accès au profil client
+	
+	- Penser les structures de données à utiliser
+
+	- Gérer l'accès :
+		-- Au profil du client (authetification par mdp)
+		-- Aux données du client
+	
