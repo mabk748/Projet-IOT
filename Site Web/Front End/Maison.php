@@ -32,7 +32,7 @@
     <?php
 
         $user = 'root';
-        $psw = 'root';
+        $psw = 'rot';
         $dsn = 'mysql:host=localhost;dbname=homeotics';
 
         try {
@@ -42,6 +42,7 @@
         } catch(PDOException $e)    {
 
             echo "<br> Erreur! : " .$e->getMessage() ."</br>";
+            echo "Quentin : Make sure you imported the database.";
             die();
 
         }
