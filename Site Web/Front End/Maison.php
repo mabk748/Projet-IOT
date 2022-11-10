@@ -1,3 +1,16 @@
+<?php
+    
+    session_start();
+    // Redirecting to login page if client not logged in
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+
+        header("Location: login2.php");
+        exit();
+
+    }
+
+?>
+
     <!DOCTYPE html>
     <html lang="en">
     <link rel="stylesheet" href="site.css" type="text/css"/>
@@ -31,27 +44,13 @@
 
     <?php
 
-        $user = 'root';
-        $psw = 'rot';
-        $dsn = 'mysql:host=localhost;dbname=homeotics';
-
-        try {
-
-            $dbh = new PDO($dsn, $user, $psw);
-
-        } catch(PDOException $e)    {
-
-            echo "<br> Erreur! : " .$e->getMessage() ."</br>";
-            echo "Quentin : Make sure you imported the database.";
-            die();
-
-        }
+        require("dbLogin.php");
 
         // Prepare query to select all products belonging to a :client
         $q_clientProds = 'SELECT * FROM Produits WHERE (refClient=:client)';
-        $stmt = $dbh->prepare($q_clientProds);
+        $stmt = $DBH->prepare($q_clientProds);
         // Execute query for client with clientId = 4
-        $stmt->execute(array(":client"=>4));
+        $stmt->execute(array(":client"=>$_SESSION['clientId']));
         $prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // Sort obtained table by piece
         $pieces = array_column($prods, 'piece');
@@ -59,7 +58,10 @@
 
         //print_r($prods);
 
+        echo "<p>Client : " .$_SESSION['username'] ."</p>";
+
         ?>
+
 
         <div id="productList">
 

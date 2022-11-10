@@ -1,10 +1,18 @@
+<?php
+
+    session_start();
+
+    require("basicFunctions.php");   
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
     <link rel="stylesheet" href="site.css" type="text/css"/>
     <style>
@@ -23,42 +31,28 @@
             <li><a href="Equipe.html">Notre Equipe</a></li>
             <li><a href="Maison.php">Ma Maison</a></li>
             <li><a href="Apropos.html">A Propos</a></li>
-            <li><a href="login2.html">Espace Client</a></li>
+            <li><a href="login2.php">Espace Client</a></li>
         </ul>
     </div>
+
+    <?php showSessionErrors(); ?>
     
-    <div class="register-box">
-          <h2>Register</h2>
-           <form>
-            <div class="user-box">
-                <input type="text" name="" required="">
-                <label>First name</label>
-            </div>
-            <div class="user-box">
-                <input type="text" name="" required="">
-                <label>Last name</label>
-            </div>
+    <div class="login-box">
+          <h2>Login</h2>
+           <form action="loginAuth.php" method="POST">
                <div class="user-box">
-                   <input type="text" name="" required="">
-                   <label>Username</label>
+                   <input type="text" name="username" required="">
+                   <label>Usename</label>
                </div>
                <div class="user-box">
-                <input type="text" name="" required="">
-                <label>E-mail</label>
-            </div>
-               <div class="user-box">
-                   <input type="password" name="" required="">
+                   <input type="password" name="password" required="">
                    <label>Password</label>
                </div>
-               <div class="user-box">
-                <input type="password" name="" required="">
-                <label>Confirm password</label>
-            </div>
                 <div class="button-form">
-                   <a id="submit" href="#">Submit</a>
-                    <div id="login">
-                       Do you have an account ?
-                       <a href="login2.html">Login</a>
+                   <input type="submit" value="Submit">
+                    <div id="register">
+                       Don't have an account ?
+                       <a href="registerForm.php">Register</a>
                     </div>
                 </div>
             </form>
