@@ -22,20 +22,14 @@
     </style>
 </head>
 <body>
-    <div id="header">
-		<div id="container" >
-			<a href="Accueil.html"><img src="HOMEotix_logo.jpg" style="width:300px;height:100px;"></a>
-		</div>
-        <ul>
-            <li><a href="Accueil.html">Accueil</a></li>
-            <li><a href="Equipe.html">Notre Equipe</a></li>
-            <li><a href="Maison.php">Ma Maison</a></li>
-            <li><a href="Apropos.html">A Propos</a></li>
-            <li><a href="login2.php">Espace Client</a></li>
-        </ul>
-    </div>
 
-    <?php showSessionErrors(); ?>
+    <?php   
+
+        showSessionErrors(); 
+
+        require("header.html");
+
+    ?>
     
     <div class="login-box">
           <h2>Login</h2>
@@ -57,8 +51,8 @@
                 </div>
             </form>
         </div>
-    <div class="bottom">
-        copyright ©HOMEotix
-    </div>
+
+    <?php   require("footer.html"); ?>
+
 </body>
 </html>

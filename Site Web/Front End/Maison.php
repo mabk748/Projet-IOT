@@ -9,6 +9,8 @@
 
     }
 
+    require("basicFunctions.php")
+
 ?>
 
     <!DOCTYPE html>
@@ -22,18 +24,8 @@
 
     <!---------------- HEADER ------------------->
 
-        <div id="header">
-            <div id="logo" >
-    			<a href="Accueil.html"><img src="HOMEotix_logo.jpg" style="width:300px;height:100px;"></a>
-    		</div>
-            <ul>
-                <li><a href="Accueil.html">Accueil</a></li>
-                <li><a href="Equipe.html">Notre Equipe</a></li>
-                <li><a href="Maison.php">Ma Maison</a></li>
-                <li><a href="Apropos.html">A Propos</a></li>
-                <li><a href="login2.php">Espace Client</a></li>
-            </ul>
-        </div>
+    <?php   require("header.html"); ?>
+
 
     <!---------------- CONTENT ------------------->
     
@@ -44,11 +36,11 @@
 
     <?php
 
-        require("dbLogin.php");
-
+        // Connecting to database
+        $dbh = dataBaseConnect();
         // Prepare query to select all products belonging to a :client
         $q_clientProds = 'SELECT * FROM Produits WHERE (refClient=:client)';
-        $stmt = $DBH->prepare($q_clientProds);
+        $stmt = $dbh->prepare($q_clientProds);
         // Execute query for client with clientId = 4
         $stmt->execute(array(":client"=>$_SESSION['clientId']));
         $prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -107,9 +99,8 @@
 
 <!---------------- FOOTER ------------------->
 
-    <div id="bottom">
-        copyright ©HOMEotix
-    </div>
+    <?php   require("footer.html"); ?>
+
 
 </body>
 </html>

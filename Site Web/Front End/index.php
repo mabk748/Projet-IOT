@@ -6,19 +6,9 @@
     <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
 </head>
 <body>
-    <div id="header">
-		<div id="container" >
-			<a href="Accueil.html" style="inline-size: 100px;"><img src="HOMEotix_logo.jpg" style="width:300px;height:100px;"><a>		
-		</div>
-        <ul>
-            <li><a href="Accueil.html">Accueil</a></li>
-            <li><a href="Equipe.html">Notre Equipe</a></li>
-            <li><a href="Maison.php">Ma Maison</a></li>
-            <li><a href="Apropos.html">A Propos</a></li>
-            <li><a href="login2.php">Espace Client</a></li>
-        </ul>
-    </div>
-    
+
+<?php require("header.html"); ?>
+
     <div class="relative">
         <div id = "middle">
             <div class="slider">
@@ -51,8 +41,8 @@
               </div>
         </div>
     </div>
-    <div class="bottom">
-        copyright ©HOMEotix
-    </div>
+    
+    <?php   require("footer.html"); ?>
+
 </body>
 </html>
