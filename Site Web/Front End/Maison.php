@@ -4,7 +4,7 @@
     // Redirecting to login page if client not logged in
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
-        header("Location: login2.php");
+        header("Location: login.php");
         exit();
 
     }
