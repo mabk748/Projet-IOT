@@ -9,7 +9,7 @@
                 <a href="logout.php">Log Out</a>
             </div>
             <div style="width:10%;"></div>
-            <a href="Maison.php" style="inline-size: 100px;"><img src="Icone_Personne.png" style="width:70px;height:70px;"><a> <!-- Amene a parametre client -->
+            <a href="client_page.php" style="inline-size: 100px;"><img src="Icone_Personne.png" style="width:70px;height:70px;"><a> <!-- Amene a parametre client -->
         </div>
     </div>
         <ul>
