@@ -1,3 +1,11 @@
+<?php
+
+    session_start();
+
+    require("basicFunctions.php");   
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="site.css">
@@ -9,7 +17,7 @@
 </head>
 <body>
     <?php   
-        require("header.html"); 
+        require("header.php"); 
 
         $cv_path = "CV/CV_" .$_GET['name'] .".jpg";
 

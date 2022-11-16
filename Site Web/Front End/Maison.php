@@ -24,7 +24,7 @@
 
     <!---------------- HEADER ------------------->
 
-    <?php   require("header.html"); ?>
+    <?php   require("header.php"); ?>
 
 
     <!---------------- CONTENT ------------------->

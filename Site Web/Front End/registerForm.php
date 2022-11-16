@@ -27,7 +27,7 @@
 
     showSessionErrors(); 
     
-    require("header.html");
+    require("header.php");
 
     ?>
 

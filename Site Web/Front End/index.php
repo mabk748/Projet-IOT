@@ -1,3 +1,11 @@
+<?php
+
+    session_start();
+
+    require("basicFunctions.php");   
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="site.css" type="text/css"/>
@@ -7,7 +15,7 @@
 </head>
 <body>
 
-<?php require("header.html"); ?>
+<?php require("header.php"); ?>
 
     <div class="relative">
         <div id = "middle">

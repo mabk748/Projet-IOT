@@ -35,8 +35,16 @@ a{
 }
 
 #container{
-  background-image: "HOMEotix_logo.jpg";
-  background-position: center;
+  justify-content: space-between;
+  display: inline-flex;
+  inline-size: 95%;
+}
+#containerBis{
+  float: left;
+}
+
+.hide{
+  display:none;
 }
 
 div#header ul{
