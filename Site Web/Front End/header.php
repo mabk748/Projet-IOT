@@ -1,6 +1,6 @@
 <div id="header">
     <div id="container">
-		<a href="index.php" style="inline-size: 100px;"><img src="HOMEotix_logo.jpg" style="width:300px;height:100px;"><a>
+		<a href="index.php" style="inline-size: 80px;"><img src="HOMEotix_log.jpg" style="width:300px;height:auto;"><a>
         <div id="containerBis">
             <div <?php if ( isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) echo " class='hide';"; else echo " class='log';";?> >
                 <a href="login.php">Log In</a>

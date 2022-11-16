@@ -9,14 +9,12 @@ body{
   background-color: white;
   /* font-family: var(--font-style);*/
 }
-img{
-  width: 80%;
-}
 
 .relative{
   position: relative;
-  top: 150px;
-  margin-bottom: 35%;
+  top: 130px;
+  margin-bottom: 15%;
+  background-color: white;
 }
 
 a{
@@ -155,13 +153,14 @@ div#productList ul#productSectionList ul li {
 
 #middle{
   z-index: 2;
-  left: 10%;
+  margin-left: 15%;
+  width: 70%;
 }
 
 .login-box {
   z-index: 1;
   position: absolute;
-  top: 510px;
+  top: 50%;
   left: 50%;
   width: 400px;
   padding: 40px;
