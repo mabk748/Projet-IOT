@@ -1,0 +1,4 @@
+
+	Bill Gates :		username->BillGates 	password->Miscrosoft
+	Patrice Bonhomme : 	username->PB 			password->Dantzig
+	Stéphanie Réglade :	username-> 				password->
