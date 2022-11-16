@@ -39,9 +39,6 @@ a{
   display: inline-flex;
   inline-size: 95%;
 }
-#containerBis{
-  float: left;
-}
 
 .hide{
   display:none;
