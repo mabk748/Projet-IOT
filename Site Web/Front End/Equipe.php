@@ -19,32 +19,30 @@
 
     <div class="relative">
         <form action="CV.php" method="GET">
-            <ul>
-                <li>
-                    <a>Gaye Diawara</a>
+                <div id="personnep">
                     <button type="submit" name="name" value="Gaye_DIAWARA">
-                        <img src="Icone_Personne.png" width="100" height="100">
+                        <img src="fantome1.png" width="100" height="100">
                     </button>
-                </li>
-                <li>
+                    <a>Gaye Diawara</a>
+                </div>
+                <div id="personnei">
                     <a>Audrey Garcia</a>
                     <button type="submit" name="name" value="Audrey_GARCIA">
-                        <img src="Icone_Personne.png" width="100" height="100">
+                        <img src="fantome3.png" width="100" height="100">
                     </button>
-                </li>
-                <li>
-                    <a>Mohamed Abouakil</a>
+                </div>
+                <div id="personnep">
                     <button type="submit" name="name" value="Mohamed_ABOUAKIL">
-                        <img src="Icone_Personne.png" width="100" height="100">
+                        <img src="fantome4.png" width="100" height="100">
                     </button>
-                </li>
-                <li>
+                    <a>Mohamed Abouakil</a>
+                </div>
+                <div id="personnei">
                     <a>Quentin Lesniak</a>  
                     <button type="submit" name="name" value="Quentin_LESNIAK">
-                        <img src="Icone_Personne.png" width="100" height="100">
+                        <img src="fantome2.png" width="100" height="100">
                     </button>
-                </li>
-            </ul>
+                </div>
     </div>
     
     <?php   require("footer.html"); ?>
