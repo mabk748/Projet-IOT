@@ -1,0 +1,359 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+:root{
+  --font-style: 'Nunito Sans', sans-serif;
+} /*-- décommente si tu préfère ce font */
+
+/* ----------- GENERAL ------------ */
+
+body{
+    background-color: black;
+    /* font-family: var(--font-style);*/
+  }
+  
+  .relative{
+    position: relative;
+    top: 130px;
+    margin-bottom: 15%;
+    background-color: black;
+  }
+  
+  a{
+    text-decoration: none;/*Pour que le lien ne soit plus "souligné"...*/
+     color: white;
+    vertical-align: center;
+  }
+  
+  /* ------------------ HEADER -------------------- */
+  #header{
+    z-index: 1;
+    inline-size: 100%;
+    background-color: black;
+    position: fixed;
+      top: 0px;
+  }
+  
+  #container{
+    justify-content: space-between;
+    display: flex;
+    inline-size: 135%;
+  }
+  #containerBis {
+    width: 200px;
+    height: 80px;
+    justify-content: right;
+    display: inline-flex;
+    margin-top: 10px;
+  }
+  
+  .hide{
+    display:none;
+  }
+  .log{
+    line-height: 80px;
+    text-align: center;
+  }
+  
+  div#header ul{
+    margin: 0%;
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 2px;
+    border: 0.1px solid white;
+    background-color: black;
+    box-shadow: 5px 5px 5px teal;
+  }
+  div#header li{
+    margin: auto;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  div#header li:hover{
+    background: #5fbebe;
+    color: #5fbebe;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #5fbebe, 0 0 25px #5fbebe, 0 0 100px #5fbebe;
+  }
+  
+  /* -------------------- FOOTER ---------------------- */
+  
+  .footer{
+    z-index: -1;
+    position: fixed;
+    background-image: linear-gradient(180deg, black,teal);
+    bottom: 0%;
+    height: 50px;
+    left:0%;
+    right:0%;
+    width:auto;
+    text-align: center;
+    line-height: 50px;
+  }
+  
+  
+  /* ----------- CONTENT ------------ */
+  
+  /* Display of client's products on Maison.php page */
+  div#productList {
+  
+  
+  
+  }
+  
+  div#productList ul#productSectionList  {
+  
+    list-style: none;
+  
+  }
+  
+  div#productList ul#productSectionList  {
+  
+  
+  }
+  
+  div#productList ul#productSectionList h4  {
+  
+    border: 0.1px solid white;
+    width: 50%;
+  
+  }
+  
+  div#productList ul#productSectionList ul  {
+  
+    display: flex;
+    padding: 10px 10px;
+    list-style: none;
+    
+  }
+  
+  div#productList ul#productSectionList ul li {
+  
+    border: 0.1px solid white;
+    background-color: gray;
+    margin-left: 3%;
+    width: 300px;
+    height: 200px;
+  
+  }
+  
+  #Team
+  {text-align: center;
+    line-height: 5;
+    background-color: aliceblue;
+    left:10%;
+    right:10%;
+    width:auto;
+  }
+  #Team:hover {
+    transform:scale(1.25);/* L'image est grossie de 25% */
+    }
+  
+  #middle{
+    z-index: 2;
+    margin-left: 15%;
+    width: 70%;
+  }
+  
+  .login-box {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: black;
+    box-shadow: 0 15px 25px teal;
+    border-radius: 10px;
+  }
+  
+  .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: rgb(14, 84, 84);
+    text-align: center;
+  }
+  .login-box .user-box input {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(14, 84, 84);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(14, 84, 84);
+    outline: none;
+    background: transparent;
+  }
+  .login-box .user-box label {
+    position: relative;
+    left: 0;
+    top: -60px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(14, 84, 84);
+    pointer-events: none;
+    transition: .5s;
+  }
+  .login-box .user-box input:focus~label, .login-box .user-box input:valid~label {
+    top: -85px;
+    left: 0;
+    color: rgb(14, 84, 84);
+    font-size: 12px;
+  }
+  #submit {
+    padding: 10px 20px;
+    color: rgb(14, 84, 84);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px;
+    border: 1px solid rgb(14, 84, 84);
+    margin: auto;
+  }
+  #submit:hover {
+    background: rgb(14, 84, 84);
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(14, 84, 84), 0 0 25px rgb(14, 84, 84);
+  }
+  .button-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+  #register {
+    font-size: 14px;
+    text-decoration: none;
+    color:teal;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+  }
+  #register a {
+    margin: auto;
+    color: #2c01ff;
+    text-decoration: none; 
+  }
+  #login {
+    font-size: 14px;
+    text-decoration: none;
+    color:teal;
+    margin: auto;
+    width: 60%;
+    text-align: center;
+  }
+  #login a {
+    margin: auto;
+    color: #2c01ff;
+    text-decoration: none; 
+  }
+  .register-box {
+    z-index: 1;
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    width: 50%;
+    padding: 25px;
+    transform: translate(-50%, -50%);
+    background: black;
+    box-shadow: 0 15px 25px teal;
+    border-radius: 10px;
+  }
+  
+  .register-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: rgb(14, 84, 84);
+    text-align: center;
+  }
+  .register-box .user-box input {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(14, 84, 84);
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid rgb(14, 84, 84);
+    outline: none;
+    background: transparent;
+  }
+  .register-box .user-box label {
+    position: relative;
+    left: 0px;
+    top: -60px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgb(14, 84, 84);
+    pointer-events: none;
+    transition: .5s;
+  }
+  .register-box .user-box input:focus~label, .login-box .user-box input:valid~label {
+    top: -85px;
+    left: 0;
+    color: rgb(14, 84, 84);
+    font-size: 12px;
+  }
+  .slider {
+    width: 800px;
+    margin: 30px auto;
+    position: relative;
+  }
+  .slider-viewport {
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+  }
+  .slider-content {
+    display: grid;
+    grid-auto-flow: column;
+    -webkit-transition: 1s all;
+    transition: 1s all;
+  }
+  .slider-content img {
+    width: 800px;
+    height: 400px;
+  }
+  .slider-nav {
+    position: absolute;
+    width: 100%;
+    bottom: -30px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .slider-nav a {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    background-color: #adafbc;
+    width: 15px;
+    height: 15px;
+    margin: 0 3px;
+  }
+  .slider-nav a:hover {
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.8);
+  }
+  #img2:target .slider-content {
+    -webkit-transform: translateX(-800px);
+            transform: translateX(-800px);
+  }
+  #img3:target .slider-content {
+    -webkit-transform: translateX(-1600px);
+            transform: translateX(-1600px);
+  }
+  #img4:target .slider-content {
+    -webkit-transform: translateX(-2400px);
+            transform: translateX(-2400px);
+  }
+  #img5:target .slider-content {
+    -webkit-transform: translateX(-3200px);
+            transform: translateX(-3200px);
+  }

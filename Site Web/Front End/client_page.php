@@ -17,7 +17,7 @@
     
     <?php   require("header.php");   ?>
 
-    <div class="relative">
+    <div class="login-box">
             <table align="center">
                 <thead>
                     <tr>
