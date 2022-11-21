@@ -20,10 +20,13 @@
             <table align="center">
                 <thead>
                     <tr>
-                        <th colspan="3">Informations personelles</th>
+                        <th colspan="3">Informations personnelles</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td align="center" colspan="3"><img src="Icone_Personne.png" style="width:70px;height:70px;"></td>
+                    </tr>
                     <tr>
                         <td><b>User name</b></td>
                         <td>nom du client</td>
