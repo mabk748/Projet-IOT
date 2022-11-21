@@ -8,7 +8,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="site.css" type="text/css"/>
 <head>
     <title>Espace client</title>
     <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
@@ -53,6 +52,27 @@
                     <tr>
                         <td><b>Produits</b></td>
                         <td align="center" colspan="2"><a href="Maison.php">cliquez ici</a></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+    <div class="login-box">
+            <table align="center">
+                <thead>
+                    <tr>
+                        <th colspan="3">Paramètres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Sécurité</b></td>
+                        <td align="center" colspan="2"><button>accéder à sécurité</button></td>
+                    </tr>
+                    <tr>
+                        <td><b>Mode nuit</b></td>
+                        <td><button>Activer</button></td>
+                        <td><button>Désactiver</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
-    <link rel="stylesheet" href="site.css" type="text/css"/>
     <style>
         * {
             box-sizing: border-box;

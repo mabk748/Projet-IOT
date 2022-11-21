@@ -15,7 +15,6 @@
 
     <!DOCTYPE html>
     <html lang="en">
-    <link rel="stylesheet" href="site.css" type="text/css"/>
     <head>
         <title>HOMEotix</title>
         <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
