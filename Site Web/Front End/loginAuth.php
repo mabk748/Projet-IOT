@@ -40,7 +40,7 @@
 		
 
 	$_SESSION['loggedin'] = false;
-	header("Location: login2.php");
+	header("Location: login.php");
     exit();
 
 ?>
