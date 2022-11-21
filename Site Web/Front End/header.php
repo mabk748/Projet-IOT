@@ -1,3 +1,11 @@
+<?php
+// activation du mode nuit
+if ($mode_nuit == TRUE): ?>
+<link rel="stylesheet" href="site_nuit.css" type="text/css"/>
+<?php else: ?>
+<link rel="stylesheet" href="site.css" type="text/css"/>
+<?php endif ?>
+
 <div id="header">
     <div id="container">
 		<a href="index.php" style="inline-size: 80px;"><img src="HOMEotix_log.jpg" style="width:300px;height:auto;"><a>
