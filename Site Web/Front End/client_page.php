@@ -74,8 +74,8 @@
                     </tr>
                     <tr>
                         <td><b>Mode nuit</b></td>
-                        <td><button>Activer</button></td>
-                        <td><button>Désactiver</button></td>
+                        <td><button action="<?php $_SESSION['mode_nuit'] = TRUE; ?>">Activer</button></td>
+                        <td><button action="<?php $_SESSION['mode_nuit'] = FALSE; ?>">Désactiver</button></td>
                     </tr>
                 </tbody>
             </table>
