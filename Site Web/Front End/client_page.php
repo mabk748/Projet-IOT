@@ -17,7 +17,7 @@
     <?php   require("header.php");   ?>
 
     <div class="login-box">
-            <table align="center">
+            <table align="right">
                 <thead>
                     <tr>
                         <th colspan="3">Informations personnelles</th>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="login-box">
-            <table align="center">
+            <table align="left">
                 <thead>
                     <tr>
                         <th colspan="3">Paramètres</th>
