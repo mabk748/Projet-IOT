@@ -37,19 +37,30 @@
 
         // Connecting to database
         $dbh = dataBaseConnect();
+
         // Prepare query to select all products belonging to a :client
-        $q_clientProds = 'SELECT * FROM Produits WHERE (refClient=:client)';
-        $stmt = $dbh->prepare($q_clientProds);
-        // Execute query for client with clientId = 4
+        $q_clientProdsList = 'SELECT * FROM ProduitsEnService WHERE (refClient=:client)';
+        $stmt = $dbh->prepare($q_clientProdsList);
+        // Execute query clientProdsList for client with clientId = $_SESSION['clientId']
         $stmt->execute(array(":client"=>$_SESSION['clientId']));
+        $clientProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Get all products possessed by the client form table Produits
+        $str_clientProdsId = implode(',', array_column($clientProdsList, 'idProduit'));
+        $q_prods = "SELECT * FROM Produits WHERE idProduit IN (" .$str_clientProdsId .")";
+        $stmt = $dbh->query($q_prods);
         $prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        // Sort obtained table by piece
-        $pieces = array_column($prods, 'piece');
-        array_multisort($pieces, $prods);
 
-        //print_r($prods);
+        // Preparing (sorting) $prods for sorting $clientProdsList by $rooms
+        $rooms = array_column($prods, 'piece');
+        array_multisort($rooms, $prods); // Sorting $prods by $rooms
+        $prodsId = array_column($prods, 'idProduit');
+        // Sorting $clientProds by $rooms (through $prods)
+        array_multisort($prodsId, $clientProdsList);
 
-        echo "<p id='Client'>Client : " .$_SESSION['username'] ."</p>";
+        //print_r($clientProdsList);
+
+        echo "<p>Client : " .$_SESSION['username'] ."</p>";
 
         ?>
 
@@ -59,24 +70,26 @@
             <ul id="productSectionList">
             <?php
 
-                $prevSec = '';
+                $prevSec = '';  // previous section
 
-                for ($i = 0, $size = count($prods); $i < $size; $i++)  {
+                for ($i = 0, $size = count($clientProdsList); $i < $size; $i++)  {
 
-                    if ($prods[$i]['piece'] != $prevSec)    {
+                    if ($rooms[$i] != $prevSec)    {    // If section ($room) changed
 
                         echo "\r";
                         echo <<<EOT
                         <li class='productSection'>
-                            <h4>{$prods[$i]['piece']}</h4>
+                            <h4>{$rooms[$i]}</h4>
                             <ul>\n
         EOT;
 
                     }
 
-                    echo <<<EOT
-                                <li>{$prods[$i]["nom"]}</li>\n
-        EOT;
+                    echo "<li>";
+                    echo $prods[$i]["nom"];
+                    echo "<img src='data:image/jpeg;base64," .base64_encode($prods[$i]['image']) ."' width=300px height=180px/>";
+                    echo "Référence produit : " .$clientProdsList[$i]["refProduit"];
+                    echo "</li>";
 
                     $prevSec = $prods[$i]['piece'];
 
