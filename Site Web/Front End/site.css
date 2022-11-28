@@ -12,7 +12,7 @@ body{
 
 .relative{
   position: relative;
-  top: 10px;
+  top: 20px;
   margin-bottom: 5%;
   background-color: white;
 }
@@ -162,21 +162,35 @@ div#productList ul#productSectionList ul li {
   background-color: rgb(176, 212, 237);
   margin-bottom: 5px;
 }
-div#personnep a{
-  line-height: 150px;
-}
-div#personnei a{
-  line-height: 150px;
-}
-div#personnep button{
-  border : none;
-  background-color: transparent;
-}
-div#personnei button{
-  border : none;
-  background-color: transparent;
-}
+/*#personne tr:nth-child(even){background-color:  rgb(176, 212, 237);}
+#personne tr:nth-child(odd){background-color:  rgb(157, 209, 209);}*/
 
+table#personnep a{
+  font-weight: bolder;
+  font-size: large; 
+}
+table#personnei a{
+  font-weight: bolder;
+  font-size: large;
+}
+table#personnep p{
+  line-height: 60px;
+  font-style: italic;
+}
+table#personnei p{
+  line-height: 60px;
+  font-style: italic;
+}
+table#personnep button{
+  border : none;
+  background-color: transparent;
+  cursor: pointer;
+}
+table#personnei button{
+  border : none;
+  background-color: transparent;
+  cursor: pointer;
+}
 #middle{
   z-index: 2;
   margin-left: 15%;
