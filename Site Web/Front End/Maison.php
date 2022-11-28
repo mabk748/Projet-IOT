@@ -49,7 +49,7 @@
 
         //print_r($prods);
 
-        echo "<p>Client : " .$_SESSION['username'] ."</p>";
+        echo "<p id='Client'>Client : " .$_SESSION['username'] ."</p>";
 
         ?>
 
