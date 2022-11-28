@@ -45,24 +45,34 @@
         $stmt->execute(array(":client"=>$_SESSION['clientId']));
         $clientProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Get all products possessed by the client form table Produits
-        $str_clientProdsId = implode(',', array_column($clientProdsList, 'idProduit'));
-        $q_prods = "SELECT * FROM Produits WHERE idProduit IN (" .$str_clientProdsId .")";
-        $stmt = $dbh->query($q_prods);
-        $prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($clientProdsList))    {
 
-        // Preparing (sorting) $prods for sorting $clientProdsList by $rooms
-        $rooms = array_column($prods, 'piece');
-        array_multisort($rooms, $prods); // Sorting $prods by $rooms
-        $prodsId = array_column($prods, 'idProduit');
-        // Sorting $clientProds by $rooms (through $prods)
-        array_multisort($prodsId, $clientProdsList);
+
+        
+            // Get all products possessed by the client form table Produits
+            $str_clientProdsId = implode(',', array_column($clientProdsList, 'idProduit'));
+            $q_prods = "SELECT * FROM Produits WHERE idProduit IN (" .$str_clientProdsId .")";
+            $stmt = $dbh->query($q_prods);
+            $prods = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Preparing (sorting) $prods for sorting $clientProdsList by $rooms
+            $rooms = array_column($prods, 'piece');
+            array_multisort($rooms, $prods); // Sorting $prods by $rooms
+            $prodsId = array_column($prods, 'idProduit');
+            // Sorting $clientProds by $rooms (through $prods)
+            array_multisort($prodsId, $clientProdsList);
+
+        }
 
         //print_r($clientProdsList);
 
         echo "<p>Client : " .$_SESSION['username'] ."</p>";
+        echo "<p>N° client : " .$_SESSION['clientId'] ."</p>";
+
 
         ?>
+
+        <p><br>+ Ajouter un équipement</br></p>
 
 
         <div id="productList">
