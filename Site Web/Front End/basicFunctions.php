@@ -63,5 +63,30 @@ function dataBaseConnect()	{
 
 }
 
+function tableColumnSort(array &$table, string $column, array $order)	{
+/*
+	Function to sort lines of a $table using one of its $column, by custom $order
+*/
+	// Creating an array for each class of $order
+	$calsses = array();
+	for ($i = 0; $i < sizeof($order); $i++)
+		$classes[$i] = array();
+
+	// Filling the classes if they equal one of $order's values
+	foreach($table as $row)	{
+		for ($i = 0; $i < sizeof($order); $i++)	{
+			if ($row[$column] == $order[$i])
+				array_push($classes[$i], $row);
+
+		}
+	}
+
+	$table = array();
+	// Updating $table
+	for ($i = 0; $i < sizeof($classes); $i++)
+		for ($j = 0; $j < sizeof($classes[$i]); $j++)
+			array_push($table, $classes[$i][$j]);
+
+}
 
 ?>
