@@ -1,26 +1,35 @@
 <?php
-// choix du mode nuit
-if($mode_nuit == TRUE):?>
-<link rel="stylesheet" href="site_nuit.css" type="text/css"/>
-<?php else:?>
-<link rel="stylesheet" href="site.css" type="text/css"/>
-<?php endif ?>
 
+    showSessionErrors();
+
+    // choix du mode nuit
+    //if($mode_nuit == TRUE):
+        //echo "<link rel='stylesheet' href='site_nuit.css' type='text/css'/>";
+    //else:
+        echo "<link rel='stylesheet' href='site.css' type='text/css'/>";
+    //endif
+?>
 
 <div id="header">
     <div id="container">
-		<a href="index.php" style="inline-size: 80px;"><img src="HOMEotix_log.png" style="width:300px;height:auto;"><a>
+        <div id="logo">
+		  <a href="index.php" style="inline-size: 80px;"><img src="HOMEotix_log.png" style="width:300px;height:auto;"><a>
+        </div>
         <div id="containerBis">
-            <div <?php if ( isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) echo " class='hide';"; else echo " class='log';";?> >
-                <a href="login.php">Log In</a>
-            </div>
-            <div <?php if ( !isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] == false)) echo " class='hide';"; else echo " class='log';"; ?> >
-                <a href="logout.php">Log Out</a>
-            </div>
-            <div style="width:10%;"></div>
-            <div <?php if ( !isset($_SESSION['loggedin']) || ($_SESSION['loggedin'] == false)) echo " class='hide';"; else echo " class='log';"; ?> >
-            <a href="client_page.php" style="inline-size: 100px;"><img src="Icone_Personne.png" style="width:70px;height:70px;"><a> <!-- Amene a parametre client -->
-            </div>
+        <?php 
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)  {
+                echo "\t<a href='logout.php'>Log Out</a>\n";
+                echo "\t\t\t<a href='client_page.php' style='inline-size: 100px;'>\n";
+                if ($_SESSION['image'] != NULL)
+                    echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:100px;'>\n";
+                else
+                    echo "\t\t\t\t<img src='Icone_Personne.png' style='width:70px;height:70px;'>\n";
+                echo "\t\t\t<a>\n";
+
+            }
+            else
+                echo "\t<a href='login.php'>Log In</a>";
+        ?>
         </div>
     </div>
         <ul>
