@@ -2,7 +2,16 @@
 
     session_start();
 
-    require("basicFunctions.php");   
+    require("basicFunctions.php");
+
+    $dbh = dataBaseConnect();
+    // query to get :client's info
+    $q_clientInfo = 'SELECT * FROM Clients WHERE idClient=:clientId';
+    // Prepare query to get :client's info
+    $stmt = $dbh->prepare($q_clientInfo);
+    // Execute query for client with idClient = $_SESSION['idClient']
+    $stmt->execute(array(":clientId"=>$_SESSION['clientId']));
+    $clientInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -17,7 +26,7 @@
     <?php   require("header.php");   ?>
 
     <div class="login-box">
-            <table align="right">
+            <table align="center">
                 <thead>
                     <tr>
                         <th colspan="3">Informations personnelles</th>
@@ -25,26 +34,33 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td align="center" colspan="3"><img src="Icone_Personne.png" style="width:70px;height:70px;"></td>
+                        <td align="center" colspan="3">
+                        <?php
+                            if ($_SESSION['image'] != NULL)
+                                echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:100px;'>\n";
+                            else
+                                echo "\t\t\t\t<img src='Icone_Personne.png' style='width:70px;height:70px;'>\n";
+                        ?>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>User name</b></td>
-                        <td>nom du client</td>
+                       <?php echo "<td>" .$clientInfo['nomUtilisateur'] ."</td>"; ?>
                         <td><button>modifier</button></td>
                     </tr>
                     <tr>
                         <td><b>Nom</b></td>
-                        <td>nom du client</td>
+                       <?php echo "<td>" .$clientInfo['nom'] ."</td>"; ?>
                         <td><button>modifier</button></td>
                     </tr>
                     <tr>
                         <td><b>Prenom</b></td>
-                        <td>prenom du client</td>
+                       <?php echo "<td>" .$clientInfo['prenom'] ."</td>"; ?>
                         <td><button>modifier</button></td>
                     </tr>
                     <tr>
                         <td><b>Adresse e-mail</b></td>
-                        <td>email</td>
+                       <?php echo "<td>" .$clientInfo['email'] ."</td>"; ?>
                         <td><button>modifier</button></td>
                     </tr>
                     <tr>
@@ -53,15 +69,15 @@
                         <td><button>modifier</button></td>
                     </tr>
                     <tr>
-                        <td><b>Produits</b></td>
+                        <td><b>Ma maison</b></td>
                         <td align="center" colspan="2"><a href="Maison.php">cliquez ici</a></td>
                     </tr>
                 </tbody>
             </table>
     </div>
-
+<!--
     <div class="login-box">
-            <table align="left">
+            <table align="center">
                 <thead>
                     <tr>
                         <th colspan="3">Paramètres</th>
@@ -80,6 +96,7 @@
                 </tbody>
             </table>
     </div>
+-->
     
     <?php   require("footer.html"); ?>
 
