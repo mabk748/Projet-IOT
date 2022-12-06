@@ -6,7 +6,7 @@
 /* ----------- GENERAL ------------ */
 
 body{
-  background-color: withe;
+  background-color: white;
   /*font-family: var(--font-style);*/
 }
 
@@ -19,9 +19,14 @@ div .errorBox {
 
 .relative{
   position: relative;
-  top: 130px;
-  margin-bottom: 15%;
+  top: 30px;
+  margin-bottom: 6%;
   background-color: white;
+}
+#middle{
+  z-index: 2;
+  margin-left: 15%;
+  width: 70%;
 }
 
 a{
@@ -84,7 +89,17 @@ div#header li:hover{
   background: #5fbebe;
   color: #5fbebe;
   border-radius: 5px;
-  box-shadow: 0 0 5px #5fbebe, 0 0 25px #5fbebe, 0 0 100px #5fbebe;
+  box-shadow: 0 0 5px #5fbebe, 0 0 5px #5fbebe, 0 0 5px #5fbebe;
+}
+
+div#containerBis li{
+  margin-right: 20px;
+}
+div#containerBis li:hover{
+  text-decoration: underline;
+  background: white;
+  border-radius: 5px;
+  box-shadow: none;
 }
 
 /* -------------------- FOOTER ---------------------- */
@@ -163,26 +178,28 @@ div#productList ul#productSectionList ul li {
   background-color: rgb(176, 212, 237);
   margin-bottom: 5px;
 }
-div#personnep a{
-  line-height: 150px;
-}
-div#personnei a{
-  line-height: 150px;
-}
-div#personnep button{
+table#personnep button{
   border : none;
   background-color: transparent;
 }
-div#personnei button{
+table#personnei button{
   border : none;
   background-color: transparent;
+}
+table#personnep button:hover{
+  cursor: pointer;
+}
+table#personnei button:hover{
+  cursor: pointer;
+}
+table#personnep a{
+  font-weight: bolder;
+}
+table#personnei a{
+  font-weight: bolder;
 }
 
-#middle{
-  z-index: 2;
-  margin-left: 15%;
-  width: 70%;
-}
+
 
 /* ----------- LOGIN ------------ */
 .login-box {

@@ -4,7 +4,7 @@
 
 	$dbh = dataBaseConnect();
 	// query to get :client's id, username and password
-    $q_clientAuthInfo = 'SELECT idClient, nomUtilisateur, motDePasse FROM Clients WHERE (nomUtilisateur=:username)';
+    $q_clientAuthInfo = 'SELECT idClient, nomUtilisateur, motDePasse, imageProfil FROM Clients WHERE (nomUtilisateur=:username)';
     // Prepare query to get :client's username and password
     $stmt = $dbh->prepare($q_clientAuthInfo);
     // Execute query for client with nomUtilisateur = $user
@@ -23,6 +23,7 @@
 			echo "Login successful, welcome " .$clientAuthInfo['nomUtilisateur'];
 			$_SESSION['clientId'] = $clientAuthInfo['idClient'];
 			$_SESSION['username'] = $clientAuthInfo['nomUtilisateur'];
+			$_SESSION['image'] = $clientAuthInfo['imageProfil'];
 			$_SESSION['loggedin'] = true;
 
 			header("Location: Maison.php");

@@ -37,7 +37,7 @@
                         <td align="center" colspan="3">
                         <?php
                             if ($_SESSION['image'] != NULL)
-                                echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:100px;'>\n";
+                                echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:70px;'>\n";
                             else
                                 echo "\t\t\t\t<img src='Icone_Personne.png' style='width:70px;height:70px;'>\n";
                         ?>
