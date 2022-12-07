@@ -18,17 +18,17 @@
         <div id="containerBis">
         <?php 
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)  {
-                echo "\t<a href='logout.php'>Log Out</a>\n";
+                echo "\t<li><a href='logout.php'>Log Out</a></li>\n";
                 echo "\t\t\t<a href='client_page.php' style='inline-size: 100px;'>\n";
                 if ($_SESSION['image'] != NULL)
-                    echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:100px;'>\n";
+                    echo "\t\t\t\t<img src='data:image/jpeg;base64," .base64_encode($_SESSION['image']) ."' style='width:70px;height:70px;'>\n";
                 else
                     echo "\t\t\t\t<img src='Icone_Personne.png' style='width:70px;height:70px;'>\n";
                 echo "\t\t\t<a>\n";
 
             }
             else
-                echo "\t<a href='login.php'>Log In</a>";
+                echo "\t<li><a href='login.php'>Log In</a></li>";
         ?>
         </div>
     </div>
