@@ -36,8 +36,7 @@
 
     <?php /*---------- Client's Info ----------*/
 
-        echo "<p>Client : " .$_SESSION['username'] ."</p>";
-        echo "<p>N° client : " .$_SESSION['clientId'] ."</p>";
+        echo "<p id='Client'>Client : " .$_SESSION['username'] ."<span STYLE='padding:0 0 0 40px;'>N° client : " .$_SESSION['clientId'] ."</span></p>";
 
      ?>
 
@@ -52,7 +51,7 @@
         $availableProds = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     ?>
-
+    <div id = "containerHome">
         <form action='editClientProducts.php' method='POST'>
 
             <p>+ Ajouter un équipement</p>
@@ -64,7 +63,7 @@
 
             } ?>
             </select>
-            <input type="text" name="addProdRef" value="Référence produit">
+            <input type="text" name="addProdRef" placeholder="Référence produit" required="">
             <input type='submit' value='Ajouter'>
                 
         </form>
@@ -118,14 +117,14 @@
             <select name='rmProdRef'>
             <?php foreach($clientProdsList as $prod)   {
 
-                echo "<option value='" .$prod['refProduit'] ."'>" .$prod['nom'] ." -- " .$prod['piece'] ."</option>";
+                echo "<option value='" .$prod['refProduit'] ."'>" .$prod['nom'] ." -- " .$prod['piece'] . " - Ref: " .$prod['refProduit']."</option>";
 
             } ?>
             </select>
             <input type='submit' value='Supprimer'>
                 
         </form>
-
+    </div>
         <div id="productList">
 
             <ul id="productSectionList">

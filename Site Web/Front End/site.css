@@ -119,47 +119,51 @@ div#containerBis li:hover{
 
 
 /* ----------- CONTENT ------------ */
-
-/* Display of client's products on Maison.php page */
-div#productList {
-
-
-
+#Client{
+  font-weight: bolder;
+  margin-left: 20px;
+}
+#containerHome{
+  justify-content: space-around;
+  display: flex;
+  inline-size: 80%;
 }
 
-div#productList ul#productSectionList  {
+/* Display of client's products on Maison.php page */
+div#productList ul#productSectionList  { /*Liste piece*/
 
   list-style: none;
 
 }
 
-div#productList ul#productSectionList  {
+div#productList ul#productSectionList h4  { /*Boite piece*/
 
-
-}
-
-div#productList ul#productSectionList h4  {
-
-  border: 0.1px solid black;
+  border-left: 2px solid teal;
+  border-bottom: 3px solid teal;
   width: 50%;
+  padding-left: 10px;
 
 }
 
-div#productList ul#productSectionList ul  {
+div#productList ul#productSectionList ul  { /*Liste produit*/
 
   display: flex;
   padding: 10px 10px;
   list-style: none;
+  flex-wrap: wrap;
   
 }
 
-div#productList ul#productSectionList ul li {
+div#productList ul#productSectionList ul li { /*Boite produit*/
 
-  border: 0.1px solid black;
-  background-color: gray;
+  border: 0.1px black;
+  border-radius: 5px;
+  background-color: rgb(175, 222, 215);
   margin-left: 3%;
   width: 300px;
-  height: 200px;
+  height: auto;
+  margin-bottom: 30px;
+  text-align: center;
 
 }
 
