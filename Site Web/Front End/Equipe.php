@@ -51,7 +51,7 @@
                 <table id="personnep">
                     <tr>
                         <td rowspan="2">
-                            <button type="submit" name="name" value="Mohamed_ABOUAKI">
+                            <button type="submit" name="name" value="Mohamed_ABOUAKIL">
                                 <img src="fantome4.png" width="100" height="100">
                             </button>
                         </td>

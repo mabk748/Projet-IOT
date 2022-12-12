@@ -10,11 +10,10 @@ body{
   /*font-family: var(--font-style);*/
 }
 
-div .errorBox {
+.errorBox {
 
-  background-color: black;
-  color: white;
-
+  background-color: white;
+  color: black;
 }
 
 .relative{
@@ -122,11 +121,13 @@ div#containerBis li:hover{
 #Client{
   font-weight: bolder;
   margin-left: 20px;
+  font-size: large;
 }
 #containerHome{
   justify-content: space-around;
   display: flex;
   inline-size: 80%;
+  font-weight: bolder;
 }
 
 /* Display of client's products on Maison.php page */

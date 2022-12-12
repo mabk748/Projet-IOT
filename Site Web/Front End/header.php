@@ -1,7 +1,5 @@
 <?php
 
-    showSessionErrors();
-
     // choix du mode nuit
     //if($mode_nuit == TRUE):
         //echo "<link rel='stylesheet' href='site_nuit.css' type='text/css'/>";
@@ -38,4 +36,5 @@
             <li><a href="Maison.php">Ma Maison</a></li>
             <li><a href="Apropos.php">A Propos</a></li>
         </ul>
+        <?php showSessionErrors(); ?>
 </div>

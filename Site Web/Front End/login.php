@@ -24,8 +24,6 @@
 
     <?php   
 
-        showSessionErrors(); 
-
         require("header.php");
 
     ?>
