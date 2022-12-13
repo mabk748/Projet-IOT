@@ -15,6 +15,17 @@
 
 ?>
 
+<script>
+//https://www.w3schools.com/Css/css_positioning.asp
+//https://www.w3schools.com/howto/howto_js_popup.asp
+// When the user clicks on <div>, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +57,10 @@
                     <tr>
                         <td><b>User name</b></td>
                        <?php echo "<td>" .$clientInfo['nomUtilisateur'] ."</td>"; ?>
-                        <td><button>modifier</button></td>
+                        <td>
+                            <button class="popup" onclick="myFunction()">Modifier</button>
+                            <span class="popuptext" id="myPopup">Popup text...</span>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Nom</b></td>
