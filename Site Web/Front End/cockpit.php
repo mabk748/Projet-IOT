@@ -17,6 +17,32 @@
 $period = "week";
 $prod = "";
 
+function generate_graphs($prod){
+    for ($i = 0, $size = count($ProdsFeaturesList); $i < $size; $i++){
+        if ($ProdsFeaturesList[$i] == "line"){
+            generate_line_graph($prod);
+        }
+        elseif ($ProdsFeaturesList[$i] == "pie") {
+            generate_pie_graph($prod);
+        }
+    }
+}
+
+function get_Label($period){
+    if ($period == "year"){
+        $Labels =array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    }
+    elseif ($period == "week") {
+        $Labels = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    }
+    elseif ($period == "month") {
+        $Labels = array();
+        for ($i = 1, $day = date("d"); $i <= $day; $i++){
+            array_push($Labels, $i);
+        }
+    }
+    return $Labels;
+}
 function generate_line_graph($prod){
     echo '<div> <label for="period">Select a period:</label>
     <select name="period" id="period">
@@ -85,8 +111,84 @@ function generate_pie_graph($prod){
     </script>';
     echo '</div>';
 }
+/*
+function generate_line_graph($prod){
+    echo '<canvas id="conso" width="relative"></canvas>';
+    echo '<script>
+        var consoData = {
+            labels :', echo get_label($period);,',
+            datasets : [
+            {
+                fillColor : "rgba(172,194,132,0.4)",
+                strokeColor : "#ACC26D",
+                pointColor : "#fff",
+                pointStrokeColor : "#9DB86D",
+                data : [1, 2, 3, 4, 5, 6, 7]
+            }
+        ]
+        }';
+    echo 'var conso = document.getElementById("conso").getContext("2d");
+    new Chart(conso).Line(consoData);</script>';
+    echo '</div>';
+}
+
+function generate_pie_graph($prod){
+    echo '<div> <label for="period">Select a period:</label>
+    <select name="period" id="period">
+      <option value="week">This week</option>
+      <option value="month">This month</option>
+      <option value="year">This year</option>
+    </select>';
+    echo '<canvas id="countries" width="relative"></canvas>';
+    echo '<script>
+    // pie chart data
+    var pieData = [
+        {
+            value: 20,
+            color:"#878BB6"
+        },
+        {
+            value : 40,
+            color : "#4ACAB4"
+        },
+        {
+            value : 10,
+            color : "#FF8153"
+        },
+        {
+            value : 30,
+            color : "#FFEA88"
+        }
+    ];
+    // pie chart options
+    var pieOptions = {
+         segmentShowStroke : false,
+         animateScale : true
+    }
+    // get pie chart canvas
+    var countries= document.getElementById("countries").getContext("2d");
+    // draw pie chart
+    new Chart(countries).Pie(pieData, pieOptions);
+    </script>';
+    echo '</div>';
+}
+*/
+function ONOFF_switch($prod){
+    echo '<h3><?php echo $prod ?> (ON/OFF)</h3>
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>';
+}
+
+function value_slider($prod){
+    echo '<div class="slidecontainer">
+    <input type="range" min=<?php  ?> max="100" value="50" class="slider" id="myRange">
+  </div>';
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,94 +198,24 @@ function generate_pie_graph($prod){
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
     <title>HOMEotix</title>
         <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
-    <style>
-        body {
-            top: 100px;
-        }
-        .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-        }
-        .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-        }
-        .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-        }
-        .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-        }
-        input:checked + .slider {
-        background-color: #2196F3;
-        }
-        input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-        }
-        input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-        }
-        .slider.round {
-        border-radius: 34px;
-        }
-        .slider.round:before {
-        border-radius: 50%;
-        }
-        * {
-        box-sizing: border-box;
-        }
-        .column {
-        top: 150px;
-        float: left;
-        width: 50%;
-        padding: 10px;
-        height: 100%; 
-        }
-        .row:after {
-        content: "";
-        display: table;
-        clear: both;
-        }
-    </style>
 </head>
 <body>
 <?php   require("header.php"); ?>
 
-<?php $get_room = $_GET['Piece'] ;?>
-<?php echo "<h2>$get_room</h2>";?>
-<div class="row">
-  <div class="column" style="background-color: #fff;">
+<?php $room = $_GET['Piece'] ;?>
+<?php echo "<h2>$room</h2>";?>
+<div class="rowC">
+  <div class="columnC" style="background-color: #fff;">
     <h2>Graphs</h2>
     <?php echo generate_line_graph($prod, $period); ?>
     <?php echo generate_pie_graph($prod, $period); ?>
   </div>
-  <div class="column" style="background-color: #6BF45C;">
+  <div class="columnC">
     <h2>Command </h2>
     <h3>ON/OFF</h3>
     <label class="switch">
         <input type="checkbox">
-        <span class="slider round"></span>
+        <span class="sliderC round"></span>
       </label>
   </div>
 </div>
