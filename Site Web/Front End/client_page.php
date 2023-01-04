@@ -1,8 +1,8 @@
 <?php
 
-    session_start();
+    require("basicFunctions.php");   
 
-    require("basicFunctions.php");
+    session_start();
 
     $dbh = dataBaseConnect();
     // query to get :client's info
@@ -15,6 +15,8 @@
 
 ?>
 
+<!-- TEST POPUP JS
+
 <script>
 //https://www.w3schools.com/Css/css_positioning.asp
 //https://www.w3schools.com/howto/howto_js_popup.asp
@@ -25,6 +27,7 @@ function myFunction() {
 }
 </script>
 
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,38 +57,44 @@ function myFunction() {
                         ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td><b>User name</b></td>
-                       <?php echo "<td>" .$clientInfo['nomUtilisateur'] ."</td>"; ?>
-                        <td>
-                            <button class="popup" onclick="myFunction()">Modifier</button>
-                            <span class="popuptext" id="myPopup">Popup text...</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Nom</b></td>
-                       <?php echo "<td>" .$clientInfo['nom'] ."</td>"; ?>
-                        <td><button>modifier</button></td>
-                    </tr>
-                    <tr>
-                        <td><b>Prenom</b></td>
-                       <?php echo "<td>" .$clientInfo['prenom'] ."</td>"; ?>
-                        <td><button>modifier</button></td>
-                    </tr>
-                    <tr>
-                        <td><b>Adresse e-mail</b></td>
-                       <?php echo "<td>" .$clientInfo['email'] ."</td>"; ?>
-                        <td><button>modifier</button></td>
-                    </tr>
-                    <tr>
-                        <td><b>Mot de passe</b></td>
-                        <td>*******</td>
-                        <td><button>modifier</button></td>
-                    </tr>
-                    <tr>
-                        <td><b>Ma maison</b></td>
-                        <td align="center" colspan="2"><a href="Maison.php">cliquez ici</a></td>
-                    </tr>
+                        <form method="POST" action="changeClientInfo.php">
+                            <tr>
+                                    <td><b>Username</b></td>
+                                    <td><input type="text" name="clientUsername" placeholder="<?php echo $clientInfo['nomUtilisateur'] ?>" ></td>
+                                    <!-- TEST POPUP JS
+                                    <button onclick="myFunction()">Modifier</button>
+                                    <div class="popup" id="myPopup">
+                                        <span class="">Popup text...</span>
+                                    </div>
+                                    -->
+                                
+                            </tr>
+                            <tr>
+                                <td><b>Nom</b></td>
+                                <td><input type="text" name="clientLastName" placeholder="<?php echo $clientInfo['nom'] ?>" ></td> 
+                            </tr>
+                            <tr>
+                                <td><b>Prénom</b></td>
+                                <td><input type="text" name="clientName" placeholder="<?php echo $clientInfo['prenom'] ?>" ></td>    
+                            </tr>
+                            <tr>
+                                <td><b>Adresse email</b></td>
+                                <td><input type="text" name="clientEmail" placeholder="<?php echo $clientInfo['email'] ?>" ></td>    
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="3"><button>Valider les changements</button></td>
+                            </tr>
+                        </form>
+                        <form action="changePasswordForm.php" method="POST">
+                            <tr>
+                                <td><b>Mot de passe</b></td>
+                                <td><input type="submit" value="Modifier"></td>    
+                            </tr>
+                        </form>
+                        <tr>
+                            <td><b>Ma maison</b></td>
+                            <td align="center" colspan="2"><a href="Maison.php">cliquez ici</a></td>
+                        </tr>
                 </tbody>
             </table>
     </div>
