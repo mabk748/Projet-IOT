@@ -1,0 +1,6 @@
+
+Prod en service -> Composé de x capteurs
+
+Une table par type de capteur qui stocke les logs de tous ces capteurs
+
+Pour récupérer les infos capteurs, SELECT WHERE ref_produit && Timestamp
