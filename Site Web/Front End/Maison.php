@@ -125,8 +125,9 @@
                 
         </form>
     </div>
-        <div id="productList">
 
+        <div id="productList">
+        <form action='cockpit.php' method='GET'>
             <ul id="productSectionList">
 
         <?php
@@ -140,7 +141,10 @@
                         echo "\r";
                         echo <<<EOT
                         <li class='productSection'>
-                            <h4>{$clientProdsList[$i]['piece']}</h4>
+                            <button type='submit' name='Piece' value='{$clientProdsList[$i]['piece']}'>
+                                <h4> {$clientProdsList[$i]['piece']} </h4>
+                            </button>
+                            
                             <ul>\n
         EOT;
 
@@ -165,7 +169,7 @@
         ?>
 
             </ul>
-
+            </form>
         </div>
 
     </div>
