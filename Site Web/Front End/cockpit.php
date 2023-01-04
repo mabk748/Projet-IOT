@@ -1,17 +1,12 @@
-<?php
-    
+<?php    
     session_start();
-
     // Redirecting to login page if client not logged in
     if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
 
         header("Location: login.php");
         exit();
-
     }
-
     require("basicFunctions.php")
-
 ?>
 <?php
 $period = "week";
@@ -187,6 +182,19 @@ function value_slider($prod){
   </div>';
 }
 
+function Affiche_Graph($ProdsList, $period){
+    // Connecting to database
+    $dbh = dataBaseConnect();
+    foreach ($ProdsList as $produit)
+    {
+        $q_Mesure = 'SELECT * FROM MesuresTemperature WHERE refProduit = "'.$produit["refproduit"].'" ORDER BY idMesure';
+        $stmt = $dbh->query($q_Mesure);
+        $Mesure = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if(!empty($Mesure))
+            generate_pie_graph($produit['refproduit'],$period);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -204,11 +212,26 @@ function value_slider($prod){
 
 <?php $room = $_GET['Piece'] ;?>
 <?php echo "<h2>$room</h2>";?>
+
+<?php
+// Connecting to database
+$dbh = dataBaseConnect();
+
+$q_SemiProdsList = 'SELECT idProduit FROM Produits WHERE piece="'.$room .'"';
+$stmt = $dbh->query($q_SemiProdsList);
+$SemiProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$str_ProdsId = implode(',', array_column($SemiProdsList, 'idProduit'));
+$q_ProdsList = 'SELECT refproduit, idProduit FROM ProduitsEnService WHERE idproduit IN (' .$str_ProdsId .') ORDER BY refProduit';
+        $stmt = $dbh->query($q_ProdsList);
+        $ProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <div class="rowC">
   <div class="columnC" style="background-color: #fff;">
     <h2>Graphs</h2>
-    <?php echo generate_line_graph($prod, $period); ?>
-    <?php echo generate_pie_graph($prod, $period); ?>
+    
+    <?php echo Affiche_Graph($ProdsList,$period ); ?>
   </div>
   <div class="columnC">
     <h2>Command </h2>
