@@ -1,4 +1,19 @@
 <?php
+    
+    session_start();
+
+    // Redirecting to login page if client not logged in
+    if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
+
+        header("Location: login.php");
+        exit();
+
+    }
+
+    require("basicFunctions.php")
+
+?>
+<?php
 $period = "week";
 $prod = "";
 
@@ -72,8 +87,6 @@ function generate_pie_graph($prod){
 }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +94,8 @@ function generate_pie_graph($prod){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
-    <title>Cockpit</title>
+    <title>HOMEotix</title>
+        <link rel="shortcut icon" href="HOMEotix_shortlogo.jpg">
     <style>
         body {
             top: 100px;
@@ -154,10 +168,10 @@ function generate_pie_graph($prod){
     </style>
 </head>
 <body>
+<?php   require("header.php"); ?>
 
-
-<h2>Cockpit</h2>
-
+<?php $get_room = $_GET['Piece'] ;?>
+<?php echo "<h2>$get_room</h2>";?>
 <div class="row">
   <div class="column" style="background-color: #fff;">
     <h2>Graphs</h2>
@@ -174,72 +188,5 @@ function generate_pie_graph($prod){
   </div>
 </div>
 
-<script>
-    // line chart data
-    var buyerData = {
-        labels : ["January","February","March","April","May","June"],
-        datasets : [
-        {
-            fillColor : "rgba(172,194,132,0.4)",
-            strokeColor : "#ACC26D",
-            pointColor : "#fff",
-            pointStrokeColor : "#9DB86D",
-            data : [203,156,99,251,305,247]
-        }
-    ]
-    }
-    // get line chart canvas
-    var buyers = document.getElementById('buyers').getContext('2d');
-    // draw line chart
-    new Chart(buyers).Line(buyerData);
-    // pie chart data
-    var pieData = [
-        {
-            value: 20,
-            color:"#878BB6"
-        },
-        {
-            value : 40,
-            color : "#4ACAB4"
-        },
-        {
-            value : 10,
-            color : "#FF8153"
-        },
-        {
-            value : 30,
-            color : "#FFEA88"
-        }
-    ];
-    // pie chart options
-    var pieOptions = {
-         segmentShowStroke : false,
-         animateScale : true
-    }
-    // get pie chart canvas
-    var countries= document.getElementById("countries").getContext("2d");
-    // draw pie chart
-    new Chart(countries).Pie(pieData, pieOptions);
-    // bar chart data
-    var barData = {
-        labels : ["January","February","March","April","May","June"],
-        datasets : [
-            {
-                fillColor : "#48A497",
-                strokeColor : "#48A4D1",
-                data : [456,479,324,569,702,600]
-            },
-            {
-                fillColor : "rgba(73,188,170,0.4)",
-                strokeColor : "rgba(72,174,209,0.4)",
-                data : [364,504,605,400,345,320]
-            }
-        ]
-    }
-    // get bar chart canvas
-    var income = document.getElementById("income").getContext("2d");
-    // draw bar chart
-    new Chart(income).Bar(barData);
-</script>
 </body>
 </html>
