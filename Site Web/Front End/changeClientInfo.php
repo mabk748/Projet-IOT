@@ -41,7 +41,9 @@
 
     }
     $q_updateClient .= ' WHERE idClient=' .$_SESSION['clientId'];
-    $dbh->exec($q_updateClient);
+
+    if ($nbUpdates!=0)
+        $dbh->exec($q_updateClient);
 
     header("Location: client_page.php");
 
