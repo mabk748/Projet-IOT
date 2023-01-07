@@ -49,14 +49,14 @@ function generate_line_graph($prod){
     echo '<canvas id="conso" width="relative"></canvas>';
     echo '<script>
         var consoData = {
-            labels : <?php echo get_label($period); ?>,
+            labels :'.get_label($period).',
             datasets : [
             {
                 fillColor : "rgba(172,194,132,0.4)",
                 strokeColor : "#ACC26D",
                 pointColor : "#fff",
                 pointStrokeColor : "#9DB86D",
-                data : <?php echo get_data($prod, $period); ?>
+                data : '. get_data($prod, $period) .'
             }
         ]
         }';
@@ -106,70 +106,13 @@ function generate_pie_graph($prod){
     </script>';
     echo '</div>';
 }
-/*
-function generate_line_graph($prod){
-    echo '<canvas id="conso" width="relative"></canvas>';
-    echo '<script>
-        var consoData = {
-            labels :', echo get_label($period);,',
-            datasets : [
-            {
-                fillColor : "rgba(172,194,132,0.4)",
-                strokeColor : "#ACC26D",
-                pointColor : "#fff",
-                pointStrokeColor : "#9DB86D",
-                data : [1, 2, 3, 4, 5, 6, 7]
-            }
-        ]
-        }';
-    echo 'var conso = document.getElementById("conso").getContext("2d");
-    new Chart(conso).Line(consoData);</script>';
-    echo '</div>';
+
+function current_perc($prod){
+    // prend la valeure actuelle et la transforme en % pour le controle des produits
 }
 
-function generate_pie_graph($prod){
-    echo '<div> <label for="period">Select a period:</label>
-    <select name="period" id="period">
-      <option value="week">This week</option>
-      <option value="month">This month</option>
-      <option value="year">This year</option>
-    </select>';
-    echo '<canvas id="countries" width="relative"></canvas>';
-    echo '<script>
-    // pie chart data
-    var pieData = [
-        {
-            value: 20,
-            color:"#878BB6"
-        },
-        {
-            value : 40,
-            color : "#4ACAB4"
-        },
-        {
-            value : 10,
-            color : "#FF8153"
-        },
-        {
-            value : 30,
-            color : "#FFEA88"
-        }
-    ];
-    // pie chart options
-    var pieOptions = {
-         segmentShowStroke : false,
-         animateScale : true
-    }
-    // get pie chart canvas
-    var countries= document.getElementById("countries").getContext("2d");
-    // draw pie chart
-    new Chart(countries).Pie(pieData, pieOptions);
-    </script>';
-    echo '</div>';
-}
-*/
 function ONOFF_switch($prod){
-    echo '<h3><?php echo $prod ?> (ON/OFF)</h3>
+    echo '<h3>' .$prod.' (ON/OFF)</h3>
     <label class="switch">
         <input type="checkbox">
         <span class="slider round"></span>
@@ -178,7 +121,8 @@ function ONOFF_switch($prod){
 
 function value_slider($prod){
     echo '<div class="slidecontainer">
-    <input type="range" min=<?php  ?> max="100" value="50" class="slider" id="myRange">
+    <h3>Gestion de la valeur du  '.$prod.'</h3>
+    <input type="range" min=1 max="100" value='.current_perc($prod).' class="slider" id="myRange">
   </div>';
 }
 
@@ -193,6 +137,13 @@ function Affiche_Graph($ProdsList, $period){
 
         if(!empty($Mesure))
             generate_pie_graph($produit['refproduit'],$period);
+    }
+}
+
+function Affiche_controls($ProdsList){
+    foreach($ProdsList as $produit){
+        ONOFF_switch($produit);
+        value_slider($produit);
     }
 }
 ?>
@@ -235,11 +186,7 @@ $q_ProdsList = 'SELECT refproduit, idProduit FROM ProduitsEnService WHERE idprod
   </div>
   <div class="columnC">
     <h2>Command </h2>
-    <h3>ON/OFF</h3>
-    <label class="switch">
-        <input type="checkbox">
-        <span class="sliderC round"></span>
-      </label>
+    <?php echo Affiche_controls($ProdsList) ?>
   </div>
 </div>
 
