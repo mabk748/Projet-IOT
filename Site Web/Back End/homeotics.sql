@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 08, 2023 at 08:01 PM
+-- Generation Time: Jan 09, 2023 at 05:20 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -70,14 +70,14 @@ INSERT INTO `Detection` (`idMesure`, `refProduit`, `horodatage`, `detection`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MesureAir`
+-- Table structure for table `MesuresAir`
 --
 
-CREATE TABLE `MesureAir` (
+CREATE TABLE `MesuresAir` (
   `idMesure` int NOT NULL COMMENT 'Identifiant de la mesure.',
   `refProduit` int NOT NULL COMMENT 'Référence produit possédant le capteur.',
   `horodatage` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date et heure de la mesure.',
-  `valeur` int NOT NULL COMMENT 'Valeur de la mesure.'
+  `air` int NOT NULL COMMENT 'Valeur de la mesure.'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
@@ -99,8 +99,8 @@ CREATE TABLE `MesuresTemperature` (
 --
 
 INSERT INTO `MesuresTemperature` (`idMesure`, `refProduit`, `horodatage`, `temperature`, `humidite`) VALUES
-(4, 123456789, '2023-01-08 18:21:17', 15, 10),
-(5, 123456789, '2023-01-08 18:21:32', 22, 7);
+(9, 123456789, '2023-01-09 17:15:24', 15, 8),
+(10, 123456789, '2023-01-09 17:15:41', 14, 10);
 
 -- --------------------------------------------------------
 
@@ -121,10 +121,10 @@ CREATE TABLE `Produits` (
 --
 
 INSERT INTO `Produits` (`idProduit`, `nom`, `piece`, `mesures`, `cheminImage`) VALUES
-(1, 'Station météo', 'MAISON', 'temperature, humidite', 'product_images/reveil_connecte.jpeg'),
+(1, 'Station météo', 'MAISON', 'temperature, humidite', 'product_images/station_meteo.jpeg'),
 (2, 'Radiateur connecté', 'MAISON', 'temperature', 'product_images/radiateur_connecte.jpeg'),
-(3, 'Détecteur de présence', 'MAISON', 'detection', 'product_images/seche_serviettes_connecte.jpeg'),
-(4, 'VMC', 'MAISON', 'air', 'product_images/couette_connectee.jpeg');
+(3, 'Détecteur de présence', 'MAISON', 'detection', 'product_images/detecteur.jpeg'),
+(4, 'VMC', 'MAISON', 'air', 'product_images/VMC.jpeg');
 
 -- --------------------------------------------------------
 
@@ -143,8 +143,8 @@ CREATE TABLE `ProduitsEnService` (
 --
 
 INSERT INTO `ProduitsEnService` (`refProduit`, `idProduit`, `refClient`) VALUES
-(123456789, 1, 1),
-(987654321, 3, 1);
+(1, 4, 1),
+(123456789, 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -164,9 +164,9 @@ ALTER TABLE `Detection`
   ADD KEY `Produit associé` (`refProduit`);
 
 --
--- Indexes for table `MesureAir`
+-- Indexes for table `MesuresAir`
 --
-ALTER TABLE `MesureAir`
+ALTER TABLE `MesuresAir`
   ADD PRIMARY KEY (`idMesure`),
   ADD KEY `Produit associé` (`refProduit`);
 
@@ -208,16 +208,16 @@ ALTER TABLE `Detection`
   MODIFY `idMesure` int NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de la mesure.', AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `MesureAir`
+-- AUTO_INCREMENT for table `MesuresAir`
 --
-ALTER TABLE `MesureAir`
+ALTER TABLE `MesuresAir`
   MODIFY `idMesure` int NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de la mesure.';
 
 --
 -- AUTO_INCREMENT for table `MesuresTemperature`
 --
 ALTER TABLE `MesuresTemperature`
-  MODIFY `idMesure` int NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de la mesure.', AUTO_INCREMENT=7;
+  MODIFY `idMesure` int NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de la mesure.', AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Produits`
