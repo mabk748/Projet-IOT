@@ -114,11 +114,10 @@
 
             <p>- Supprimer un équipement :</p>
 
-            <select name='rmProdRef'>
+            <select name='rmProd'>
             <?php foreach($clientProdsList as $prod)   {
 
-                echo "<option value='" .$prod['refProduit'] ."'>" .$prod['nom'] ." -- " .$prod['piece'] . " - Ref: " .$prod['refProduit']."</option>";
-
+                echo "<option value='" .$prod['refProduit'] ."/" .$prod['idProduit'] ."'>" .$prod['nom'] ." -- " .$prod['piece'] . " - Ref: " .$prod['refProduit']."</option>\n";
             } ?>
             </select>
             <input type='submit' value='Supprimer'>
@@ -150,11 +149,11 @@
 
                     }
 
-                    echo "<li>";
+                    echo "<li>\n";
                     echo $clientProdsList[$i]["nom"];
-                    echo "<img src='" .$clientProdsList[$i]['cheminImage'] ."'width=300px height=180px/>";
-                    echo "Référence produit : " .$clientProdsList[$i]["refProduit"];
-                    echo "</li>";
+                    echo "<img src='" .$clientProdsList[$i]['cheminImage'] ."'width=300px height=180px/>\n";
+                    echo "Référence produit : " .$clientProdsList[$i]["refProduit"] ."\n";
+                    echo "</li>\n";
 
                     $prevSec = $clientProdsList[$i]['piece'];
 
