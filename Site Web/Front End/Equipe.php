@@ -45,7 +45,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"></td>
+                        <td colspan="3">Developpeur Front End</td>
                     </tr>
                 </table>
                 <table id="personnep">
@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3"> Developpeur Front End</td>
+                        <td colspan="3"> Cockpit designer </td>
                     </tr>
                 </table>
                 <table id="personnei">

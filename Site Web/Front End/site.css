@@ -299,13 +299,13 @@ div#productList ul#productSectionList ul li { /*Boite produit*/
   height: auto;
   justify-content: space-around;
   display: flex;
-  background-color: rgb(157, 209, 209);
+  background: linear-gradient(90deg, rgb(176, 212, 237), rgba(157, 209, 209));
   margin-bottom: 5px;
 }
 #personnep{
   justify-content: space-around;
   display: flex;
-  background-color: rgb(176, 212, 237);
+  background: linear-gradient(90deg, rgba(157, 209, 209) , rgb(176, 212, 237) );
   margin-bottom: 5px;
 }
 table#personnep button{
