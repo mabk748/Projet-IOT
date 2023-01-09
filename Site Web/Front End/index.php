@@ -19,6 +19,7 @@
     <div class="relative">
         <div id = "middle">
             <div class="slider">
+      <h2> Controler sa maison n'est plus qu'à un clic </h2>
                 <div class="slider-viewport">
                   <div id="img1">
                     <div id="img2">
@@ -26,11 +27,11 @@
                         <div id="img4">
                           <div id="img5">
                             <div class="slider-content">
-                              <img src="https://source.unsplash.com/800x400/?water">
-                              <img src="https://source.unsplash.com/800x400/?forest">
-                              <img src="https://source.unsplash.com/800x400/?mountain">
-                              <img src="https://source.unsplash.com/800x400/?nature">
-                              <img src="https://source.unsplash.com/800x400/?field">
+                              <img src="home1.jpg">
+                              <img src="home2.jpg">
+                              <img src="home3.png">
+                              <img src="home4.jpg">
+                              <img src="home5.jpg">
                             </div>
                           </div>
                         </div>

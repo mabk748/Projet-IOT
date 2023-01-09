@@ -99,7 +99,7 @@ foreach($ProdsList as &$produit) {
     //print_r($produit['mesures']);
 }
 
-print_r($ProdsList);
+//print_r($ProdsList);
 
 ?>
 

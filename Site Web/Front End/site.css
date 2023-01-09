@@ -534,3 +534,17 @@ table#personnei a{
   -webkit-transform: translateX(-3200px);
           transform: translateX(-3200px);
 }
+div.slider h2{
+  padding-left: 190px;
+}
+
+/* ------------------ A PROPOS -------------------- */
+div.notre_histoire img{
+  margin-top: 10px;
+}
+div.notre_mission img{
+  margin-top: 10px;
+}
+div.rejoignez_nous img{
+  margin-top: 10px;
+}
