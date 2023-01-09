@@ -1,0 +1,38 @@
+------- Introduction --------
+
+
+
+------- Back end --------
+
+	Nous entendons par "back end" la partie non visible à l'utilisateur du site web. Elle comprend la base de doonées MySQL hébergée sur le RaspberryPi et par conséquent les scripts PHP interfaçant cette dernière avec notre site web.
+
+
+	------- La base de données --------
+
+		Basée sur les fonctionalités imaginées pour le site web et le cokcpit, nous avons construit notre base de données.
+		Elle s'articule autours de 4 entités :
+
+			- Les produits : il s'agit ici de notre gamme de produits. Ils peuvent être assimilés à des types de produits (Ex: radiateur connecté) et sont composés de cartéristaiques qui leurs sont propres.
+			- Les clients : ceux-ci peuvent créer et administrer un compte sur notre plateforme. Les informations classiques d'un profil client sont enregistrées dans la base de données (cf. figure n°i MLD/MCD). Grace à leur compte ils ont accès à une page de modélisation de leur maison, où ils peuvent ajouter, supprimer ou monitorer leurs produits en service HOMEotix.
+			- Les produits en service : différents des produits (cf. ci-dessus), ce sont les appareils vendus et enregistrés dans la base de données par nos clients. Ils appartiennent donc à un client et sont caratérisés par une référence unique et d'un type de produit.
+			- Les mesures : chaque produit possède au minimum un capteur. Les mesures font donc référence à la valeur mesurée par un capteur donné sur sur un produit donné. Elles sont identifiées par un identifiant unique, la référence d'un produit en service, un horodatage et une valeur.
+
+			Les informations ci-dessus sont synthétisées dans le Modèle Logique de Données (MLD) ci-dessous :
+
+			###### Figure - MLD ######
+
+
+			Afin de déterminer les tables et relations nécéssaires à notre base de données, nous avons converti le MLD en Modèle Conceptuel de Données (MCD) présenté ci-dessous :
+
+			###### Figure - MCD ######
+
+
+			Chaque bloc correspond à une table, les termes en gras soulignés aux clés primaires et les termes simplement soulignés aux clés étrangères.
+			Par souci de praticité et de clareté, nous avons choisi de créer une table par type de mesure, excepté pour la température et l'humidité car elles sont toujours mesurées ensemble. Nous nous retrouvons donc avec 6 tables dont 3 pour les mesures.
+
+			Grâce à ce modèle nous avons pu créer la base de données sur un serveur MySQL, à l'aide de phpMyAdmin.
+
+			###### Figure - apercu_phpmyadmin ######
+
+
+------- Conclusion --------
