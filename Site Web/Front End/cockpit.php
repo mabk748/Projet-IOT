@@ -35,7 +35,7 @@ $stmt = $dbh->query($q_SemiProdsList);
 $SemiProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $str_ProdsId = implode(',', array_column($SemiProdsList, 'idProduit'));
-$q_ProdsList = 'SELECT refProduit, idProduit FROM ProduitsEnService WHERE idproduit IN (' .$str_ProdsId .') ORDER BY refProduit';
+$q_ProdsList = 'SELECT refProduit, idProduit FROM ProduitsEnService WHERE idProduit IN (' .$str_ProdsId .') AND refClient=' .$_SESSION['clientId'] .' ORDER BY refProduit';
 $stmt = $dbh->query($q_ProdsList);
 $ProdsList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -73,7 +73,11 @@ foreach($ProdsList as &$produit) {
             case 'detection':
                 $q_measurements = 'SELECT horodatage, detection FROM Detection WHERE refProduit="'.$produit['refProduit'] .'"';
                 break;
-            
+         
+            case 'air':
+                $q_measurements = 'SELECT horodatage, air FROM MesuresAir WHERE refProduit="'.$produit['refProduit'] .'"';
+                break;
+               
         }
         // Execute query
         $stmt = $dbh->query($q_measurements);
@@ -123,19 +127,7 @@ foreach($ProdsList as &$produit) {
 
 <?php
 
-/*
-function generate_graphs($prod){
-    for ($i = 0, $size = count($ProdsFeaturesList); $i < $size; $i++){
-        if ($ProdsFeaturesList[$i] == "line"){
-            generate_line_graph($prod);
-        }
-        elseif ($ProdsFeaturesList[$i] == "pie") {
-            generate_pie_graph($prod);
-        }
-    }
-}
-*/
-function get_label($period){
+function get_Label($period){
     if ($period == "year"){
         $Labels =array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     }
@@ -150,80 +142,190 @@ function get_label($period){
     }
     return $Labels;
 }
-function generate_line_graph($prod, $period){
-    echo '<div> <label for="period">Select a period:</label>
-    <select name="period" id="period">
-      <option value="day">Today</option>
-      <option value="week" selected>This week</option>
-      <option value="month">This month</option>
-      <option value="year">This year</option>
-    </select>', '<?php $period = $_POST["period"]; ?>';
-    echo '<canvas id="conso" width="relative"></canvas>';
-    echo '<script>
-        var consoData = {
-            labels :'.get_label($period).',
-            datasets : [
-            {
-                fillColor : "rgba(172,194,132,0.4)",
-                strokeColor : "#ACC26D",
-                pointColor : "#fff",
-                pointStrokeColor : "#9DB86D",
-                data : '. get_data($prod, $period) .'
-            }
-        ]
-        }';
-    echo 'var conso = document.getElementById("conso").getContext("2d");
-    new Chart(conso).Line(consoData);</script>';
-    echo '</div>';
-}
 
-function generate_pie_graph($x_values, $y_values, $title){
-    echo "<h4>" .$title ."</h4>\n";
-    echo '<div> <label for="period">Select a period:</label>
-    <select name="period" id="period">
-      <option value="day">Today</option>
-      <option value="week">This week</option>
-      <option value="month">This month</option>
-      <option value="year">This year</option>
-    </select>';
-    echo '<canvas id="countries" width="relative"></canvas>';
-    echo '<script>
-    // pie chart data
-    var pieData = [
-        {
-            value: 20,
-            color:"#878BB6"
-        },
-        {
-            value : 40,
-            color : "#4ACAB4"
-        },
-        {
-            value : 10,
-            color : "#FF8153"
-        },
-        {
-            value : 30,
-            color : "#FFEA88"
-        }
-    ];
-    // pie chart options
-    var pieOptions = {
-         segmentShowStroke : false,
-         animateScale : true
+/*function get_meas($donnes, $period){
+    $label = get_Label($period);
+    $j = count($label);
+    $datetime = new DateTime($donnes['horodatage'][0]); 
+    print_r($datetime['d']);
+    if($period == "week"){
+    //    while($j>0){
+            $data = array();
+            $date = $donnes['horodatage'][0]["d"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                if($donnes['horodatage'][$i]["d"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $date = $donnes['horodatage'][$i]["d"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+    //    }
     }
-    // get pie chart canvas
-    var countries= document.getElementById("countries").getContext("2d");
-    // draw pie chart
-    new Chart(countries).Pie(pieData, pieOptions);
-    </script>';
-    echo '</div>';
-}
-/*
-function current_perc($prod){
-    // prend la valeure actuelle et la transforme en % pour le controle des produits
+    elseif($period == "year"){
+        while(j>0){
+            $data = array();
+            $date = $donnes['horodatage'][$i]["m"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                if($donnes['horodatage'][$i]["m"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $date = $donnes['horodatage'][$i]["m"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+        }
+    }
+    elseif($period == "month"){
+        while(j>0){
+            $data = array();
+            $date = $donnes['horodatage'][0]["d"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                if($donnes['horodatage'][$i]["d"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $date = $donnes['horodatage'][$i]["d"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+        }
+    }
+    return $data;
 }
 */
+
+function get_meas($donnes, $period){
+    $label = get_Label($period);
+    $j = count($label);
+    if($period == "week"){
+        while($j>0){
+            $data = array();
+            $ndate = date("d/m/Y", strtotime($donnes['horodatage'][0][0]));
+            echo $ndate;
+            $date =$ndate["d"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                if($ndate["d"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                    $date = $ndate["d"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+        }
+    }
+    elseif($period == "year"){
+        while($j>0){
+            $data = array();
+            $ndate = date("d/m/Y", strtotime($donnes['horodatage'][0][0]));
+            $date = $ndate["m"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                if($ndate["m"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                    $date = $ndate["m"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+        }
+    }
+    elseif($period == "month"){
+        while($j>0){
+            $data = array();
+            $ndate = date("d/m/Y", strtotime($donnes['horodatage'][0][0]));
+            $date = $ndate["d"];
+            for($i=0; $i<count($donnes['horodatage']); $i++){
+                $sub = array();
+                $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                if($ndate["d"] == $date){
+                    array_push($sub, $donnes['valeur'][$i]);
+                }
+                else{
+                    $ndate = date("d/m/Y", strtotime($donnes['horodatage'][$i][0]));
+                    $date = $ndate["d"];
+                    $moy = array_sum($sub)/count($sub);
+                    array_push($data, $moy);
+                    unset($sub);
+                    $sub = array();
+                    array_push($sub, $donnes['valeur'][$i]);
+                    $j = $j-1;
+                }
+            }
+        }
+    }
+    return $data;
+}
+
+function generate_line_graph($prod, $period, $meas){
+    $data = array();
+    for ($i=0; $i<count($period); $i++){
+        array_push($data, array($period[$i], $meas[$i]));
+    }
+    $max_value = 0;
+    foreach ($data as $point) {
+        if ($point[1] > $max_value) {
+            $max_value = $point[1];
+        }
+    }
+    echo'<canvas id="chart_'.$prod.'" width="600" height="400"></canvas>
+    <script>
+        var canvas = document.getElementById("chart_'.$prod.'");
+        var ctx = canvas.getContext("2d");
+    
+        var width = canvas.width;
+        var height = canvas.height;
+    
+        var x_scale = width /' .count($data). ';
+    
+        var y_scale = height / ' .$max_value. ';
+    
+        ctx.beginPath();
+        ctx.moveTo(0, height - (' .$data[0][1]. ' * y_scale));
+        for (var i = 0; i < ' .count($data). '; i++) {
+            ctx.lineTo(i * x_scale, height - (' .$data[$i][1]. ' * y_scale));
+        }
+        ctx.stroke();
+    </script>';
+}
+
 function ONOFF_switch($prod){
     echo '<h4>(ON/OFF)</h4>
     <label class="switch">
@@ -231,14 +333,6 @@ function ONOFF_switch($prod){
         <span class="slider round"></span>
       </label>';
 }
-/*
-function value_slider($prod){
-    echo '<div class="slidecontainer">
-    <h4>Gestion de la valeur</h4>
-    <input type="range" min=1 max="100" value='.current_perc($prod).' class="slider" id="myRange">
-  </div>';
-}
-*/
 
 function afficher_produit($produit, $period)    {
 
@@ -255,7 +349,8 @@ function afficher_graphs($produit, $period){
 
         foreach($produit['mesures'] as $measure => $values)   {
 
-            generate_pie_graph($values['horodatage'], $values['valeur'], $measure);
+            //$meas = get_meas($values, 'week');
+            //generate_line_graph($meaure, $meas, 'week');
 
         }
     }
@@ -269,4 +364,5 @@ function afficher_controls($produit){
     //value_slider($produit);
 
 }
+
 ?>
